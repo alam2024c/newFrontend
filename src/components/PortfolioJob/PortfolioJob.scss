@@ -1,0 +1,130 @@
+.portfoioJob {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 20px 0;
+  & > * {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--theme-color)  0px 3px 8px 0px,
+      var(--theme-color)  0px 0px 0px 1px;
+    h4 {
+      color: #0099a8;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--theme-color) ;
+      margin-bottom: 20px;
+    }
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: center;
+    .img {
+      width: 40%;
+      margin: auto;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    span {
+      margin-bottom: 20px;
+      color: gray;
+    }
+    h3 {
+      color: #0099a8;
+    }
+    button {
+      background-color: var(--theme-color) ;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      transition: 0.4s ease-in-out;
+      &:hover {
+        box-shadow: var(--theme-color)  0px 3px 8px 0px,
+          var(--theme-color)  0px 0px 0px 1px;
+      }
+    }
+  }
+  .projectCard {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+  .desc {
+  }
+  .skills {
+    ul {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      li {
+        background-color: var(--theme-color) ;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .addOffer {
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      .group {
+        display: flex;
+        gap: 2rem;
+        label {
+          color: #0099a8;
+          min-width: 100px;
+          //   margin-bottom: 10px;
+        }
+        input,
+        textarea {
+          width: 100%;
+          border: 1px solid var(--theme-color) ;
+          border-radius: 10px;
+          padding: 10px 20px;
+          outline-color:var(--theme-color) ;
+        }
+      }
+      .group:last-of-type {
+        flex-direction: column;
+        textarea {
+          min-height: 200px;
+        }
+      }
+    }
+    button {
+      background-color: var(--theme-color) ;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      transition: 0.4s ease-in-out;
+      width: fit-content;
+      &:hover {
+        box-shadow: var(--theme-color) 0px 3px 8px 0px,
+          var(--theme-color) 0px 0px 0px 1px;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.video_play_button {
+  position: relative;
+  color: white;
+  bottom: 60%;
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+}
+.video_play_button > .MuiSvgIcon-root {
+  font-size: 4rem !important;
+  cursor: pointer;
+}

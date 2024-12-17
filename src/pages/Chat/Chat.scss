@@ -1,0 +1,120 @@
+.__main {
+  height: 100vh;
+}
+.main__chatbody {
+  flex-grow: 1;
+  // background-color: #f4f3f8;
+  border-radius: 10px;
+  display: flex;
+  height: 100vh;
+  .main__chatlist {
+    flex: 1.5;
+  }
+  .main__chatcontent {
+    flex: 5;
+  }
+}
+// .menu-chat {
+//   display: none;
+// }
+.emoji-box {
+  z-index: 9999;
+}
+.theme-dark .main__chatbody {
+  background-color: #293145;
+}
+.theme-dark .content__body {
+  background-color: #293145;
+}
+
+.theme-dark .main__userprofile .profile__card {
+  background-color: #293145;
+}
+
+.backChat {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .main__chatcontent {
+    position: absolute;
+    z-index: 1000;
+    left: 107%;
+    top: 0;
+    bottom: 0;
+    padding: 14px;
+    background-color: #ebe7fb;
+    width: 100%;
+    transition: 0.4s ease-in-out;
+    .chat__item__content {
+      max-width: 75% !important;
+    }
+    .backChat {
+      display: block;
+    }
+  }
+  .main__chatlist {
+    border-left: 1px solid #ebe7fb;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .feature {
+      width: calc(100vw - 30px) !important;
+      margin: auto;
+    }
+  }
+}
+
+@media (min-width: 993px) {
+  .main__chatlist.active {
+    width: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 0 !important;
+    .dropdown-menu-chat {
+      right: 0 !important;
+      left: auto !important;
+    }
+    .dropdown-menu-chat:after {
+      right: 10px !important;
+      left: auto !important;
+    }
+
+    .feature {
+      width: 90px !important;
+      padding: 20px 0px;
+    }
+    h3 {
+      display: none !important;
+    }
+    .top {
+      .messages {
+        display: none !important;
+      }
+    }
+    .userMeta {
+      display: none !important;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      position: relative;
+    }
+  }
+}
+
+.notfound__chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 50px;
+  font-weight: 600;
+  background-color: #eee;
+}
+
+
+.main__chatbody .main__chatlist{
+  width: 25% !important;
+}

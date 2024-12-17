@@ -1,0 +1,146 @@
+.gallery {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  grid-template-columns: repeat(4, 1fr);
+
+  & > .image {
+    & > img {
+      object-fit: cover;
+      height: 10rem;
+    }
+  }
+
+  & > .imageNo1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  &.with1 {
+    grid-template-columns: 1fr;
+
+    & > .image {
+      & > img {
+        height: 100%;
+      }
+    }
+  }
+
+  &.with2 {
+    grid-template-columns: repeat(2, 1fr);
+    & > .imageNo1 {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  &.with3 {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    & > .image {
+      & > img {
+        height: 100%;
+      }
+    }
+
+    & > .imageNo1 {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
+
+    & > .imageNo2 {
+      grid-column-start: 4;
+      grid-column-end: 7;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+
+    & > .imageNo3 {
+      grid-column-start: 4;
+      grid-column-end: 7;
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+  }
+
+  &.with4 {
+    grid-template-columns: repeat(2, 1fr);
+    & > .image {
+      & > img {
+        max-height: 14rem;
+        object-fit: cover;
+      }
+    }
+    & > .imageNo1 {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  &.with5 {
+    & > :last-child.imageNo5 {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    // grid-template-columns: 1fr;
+
+    & > .imageNo1 {
+      grid-column-start: 1;
+      grid-column-end: 5;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+  }
+
+  & img {
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  & > :last-child.imageNo5 {
+    position: relative;
+    opacity: 0.3;
+  }
+
+  &__indicator {
+    position: absolute;
+    font-size: 3em;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+}
+.image{
+  position: relative;
+}
+
+.multi {
+  & > .imageNo2 {
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  & > .imageNo3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 6;
+  }
+  & > .imageNo4 {
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 6;
+  }
+}

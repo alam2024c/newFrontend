@@ -1,0 +1,41 @@
+html {
+  /* scroll-snap-type: y mandatory; */
+}
+.app_videos {
+  position: relative;
+  height: 90vh;
+  border-radius: 20px;
+  overflow: scroll;
+  width: 80%;
+  max-width: 28rem;
+  scroll-snap-type: y mandatory;
+  background: #c4c4c4;
+  @media (max-width: 450px) {
+    & {
+      max-width: 100% !important;
+      width: 100% !important;
+      border-radius: 0px !important;
+      & video {
+        border-radius: 0px !important;
+      }
+    }
+  }
+}
+.app_videos::-webkit-scrollbar {
+  display: none;
+}
+.app_videos {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.icons-reels {
+  svg {
+    font-size: 20px;
+  }
+}
+.icons-reels:hover {
+  svg {
+    color: red !important;
+  }
+}

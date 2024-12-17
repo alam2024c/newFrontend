@@ -1,0 +1,214 @@
+.portfolio {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+
+  // & *,
+  // & *::after,
+  // & *::before {
+  //   margin: 0;
+  //   padding: 0;
+  //   box-sizing: border-box;
+  // }
+
+  & > div {
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 1px 7px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.375rem;
+    background-color: #fff;
+    padding-block: 1.25rem;
+    padding-inline: 2.5rem;
+    @media (max-width: 500px) {
+      & {
+        padding-inline: 0.5rem;
+      }
+    }
+
+    & > p {
+      display: flex;
+      justify-content: space-between;
+      color: #181818;
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+  }
+
+  & > :first-child {
+    padding-block: 0rem;
+    padding-inline: 0rem;
+  }
+
+  &__cover {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12.27813rem;
+    overflow: hidden;
+    border-radius: 0.375rem 0.375rem 0rem 0rem;
+    max-width: 100%;
+
+    &__image {
+      max-width: 100%;
+    }
+
+    &__button {
+      position: absolute;
+      bottom: 0.62rem;
+      left: 0.62rem;
+    }
+
+    &__menu {
+      display: none;
+
+      position: absolute;
+      left: 4.5rem;
+
+      background-color: #fff;
+      gap: 0.25rem;
+      border-radius: 1.25rem;
+      // padding-inline: 0.5rem;
+
+      & > li {
+        background-color: #fff;
+        padding: 0.5rem;
+        border-bottom: 1px solid;
+        border-radius: 1.25rem;
+        cursor: pointer;
+        max-height: min-content;
+      }
+
+      &.opened {
+        display: grid;
+      }
+    }
+  }
+
+  &  .resume  .box-resume {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-block: 1.5rem 1.8rem;
+    box-shadow: 0px 4px 16px 0px #eae2fd;
+
+    & .cvImg:first-child {
+      padding: 1rem;
+      background-color: #daf2d9;
+      display: flex;
+      width: 3rem;
+      height: 3.5rem;
+      padding: 1rem 0.75rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      border-radius: 0.25rem;
+    }
+
+    & h4 {
+      color: #575361;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 130%;
+    }
+
+    & p {
+      color: #857e95;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 130%;
+    }
+
+    & .cvProgress {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #73b172;
+
+      &_bar {
+        height: 0.5rem;
+        // width: 100%;
+        background-color: #73b172;
+        border-radius: 1.5rem;
+      }
+    }
+  }
+
+  & .introductoryVideo > div {
+    padding-inline: 6rem;
+    margin-block: 2rem;
+  }
+
+  & .posts > div > div {
+    padding-block-start: 1rem;
+    margin-block-start: 1rem;
+    border-top: 1px solid #ebebeb;
+    text-align: center;
+  }
+}
+
+.m-auto {
+  margin: auto !important;
+}
+
+.Skills {
+  padding-block-start: 1rem;
+  margin-block-start: 1rem;
+  border-top: 1px solid #ebebeb;
+  text-align: center;
+}
+.resume  .box-resume {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-block: 1.5rem 1.8rem;
+    box-shadow: 0px 4px 16px 0px #eae2fd;
+
+    & .cvImg:first-child {
+      padding: 1rem;
+      background-color: #daf2d9;
+      display: flex;
+      width: 3rem;
+      height: 3.5rem;
+      padding: 1rem 0.75rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      border-radius: 0.25rem;
+    }
+
+    & h4 {
+      color: #575361;
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 130%;
+    }
+
+    & p {
+      color: #857e95;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 130%;
+    }
+
+    & .cvProgress {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #73b172;
+
+      &_bar {
+        height: 0.5rem;
+        // width: 100%;
+        background-color: #73b172;
+        border-radius: 1.5rem;
+      }
+    }
+  }

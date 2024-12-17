@@ -1,0 +1,81 @@
+.languagePage {
+  padding: 60px;
+  min-height: 100vh;
+  width: 100vw;
+  .cardLanguage {
+    box-shadow: 0px 0px 30px 0px #0000000d;
+
+    // border: 1px solid #ccc;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+    padding: 30px 60px !important;
+    p {
+      color: #818181;
+    }
+    h3 {
+      font-size: 25px;
+    }
+    .langCardOne {
+      box-shadow: 0px 0px 30px 0px #0000000d;
+
+      display: flex;
+      flex-direction: column;
+      //   gap: 1rem;
+      border-radius: 10px;
+      //   border: 1px solid #ccc;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &.active {
+        border: 1px solid #0099ab;
+      }
+    }
+    .next {
+      background-color: #0099ab;
+      padding: 10px 50px;
+      border-radius: 7px;
+      color: #fff;
+    }
+    .back {
+      background-color: #b9bcbe;
+      padding: 10px 50px;
+      border-radius: 7px;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .languagePage {
+    padding: 20px !important;
+    .cardLanguage {
+      padding: 20px !important;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .buttonsLang {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.ColorCardOne {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+  }
+}

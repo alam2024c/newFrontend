@@ -1,0 +1,104 @@
+.RegisterFormWrapper {
+  gap: 1.13rem;
+  width: 100%;
+
+  label {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+  }
+
+  & .registerForm {
+
+    &__header {
+      text-align: start;
+      padding-block: 0 2.62rem;
+      font-family: Poppins;
+      color: #233142;
+      font-family: Inter;
+      font-size: 30px;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+
+      @media screen and (max-width: 1060px) {
+        grid-template-columns: auto;
+      }
+    }
+
+    &__validation {
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      gap: 1rem;
+      margin-block-end: 1.5rem;
+
+      & .conditions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+
+        & > p {
+          // color: #5f5f5f;
+          font-family: Mulish;
+          font-size: 0.875rem;
+          font-weight: 700;
+          letter-spacing: 0.01875rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  & .footer {
+    text-align: center;
+    margin-block-end: 2rem;
+    color: #242424;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.05rem;
+
+    & > span {
+      color: #0099ab;
+      font-family: Roboto;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.05rem;
+      cursor: pointer;
+    }
+  }
+
+  & .disabledButton {
+    cursor: "not-allowed";
+    background-color: gray;
+  }
+}
+
+.codeform .form-control {
+  display: block;
+  height: 57px;
+  margin-right: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  min-width: 0;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  max-width: 61px;
+  font-size: 50px;
+  padding-bottom: 18px;
+  padding-top: 19px;
+  line-height: normal;
+  border-left-width: medium;
+  border-top-width: medium;
+}

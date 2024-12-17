@@ -1,0 +1,99 @@
+.staticSection {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-content: center;
+  gap: 2rem;
+
+  @media screen and (max-width: 380px) {
+    gap: 4rem;
+  }
+
+  &__images {
+    grid-row: 1;
+    position: relative;
+    margin-inline: auto;
+    margin-block: auto;
+
+    & > .circle {
+      width: 16.188rem;
+      height: 16.188rem;
+
+      @media screen and (max-width: 380px) {
+        width: 8.94rem;
+        height: 8.94rem;
+      }
+    }
+
+    & > .image {
+      background-image: url("../../../../assets/images/welcome-img1.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      position: absolute;
+      top: -2rem;
+      right: 5rem;
+    }
+
+    &::before {
+      content: "";
+      background-image: url("../../../../assets/images/welcome-img2.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 1.5rem;
+      left: -1.5rem;
+    }
+
+    &::after {
+      content: "";
+      background-image: url("../../../../assets/images/welcome-img3.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 1.5rem;
+      right: -1.5rem;
+    }
+
+    @media screen and (max-width: 380px) {
+      & > .image,
+      &::before,
+      &::after {
+        width: 4rem;
+        height: 4rem;
+      }
+
+      & > .image {
+        right: 2.5rem;
+      }
+    }
+  }
+
+  &__text {
+    grid-row: 2;
+
+    & > p {
+      color: #fff;
+      font-style: normal;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 56px;
+      letter-spacing: 2px;
+      // text-wrap: nowrap;
+
+      @media screen and (min-width: 300px) {
+        font-size: 40px;
+      }
+    }
+  }
+}

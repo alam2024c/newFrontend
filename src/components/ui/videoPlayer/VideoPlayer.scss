@@ -1,0 +1,109 @@
+.videoPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  direction: ltr;
+  margin-top: 1rem;
+
+  .video {
+    width: 100%;
+  }
+
+  &.false::before {
+    content: "";
+    position: absolute;
+    inset: 1;
+    z-index: 1;
+    background-image: url("../../../assets/images/icons/play2.svg");
+    width: 10rem;
+    height: 10rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+  }
+
+  input[type="range"] {
+    height: 0.25rem;
+    background: #adadad;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 0.99;
+    }
+  }
+
+  .controlsContainer {
+    position: absolute;
+    inset: 0;
+    top: auto;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+      width: 100%;
+      aspect-ratio: 6/1;
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 150ms ease-in-out;
+    }
+
+    & .controlsTimeLine {
+      width: 100%;
+
+      & > input {
+        width: 100%;
+      }
+    }
+
+    & > .controlsButtons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem;
+
+      & > img {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1.1rem;
+        opacity: 0.7;
+        transition: opacity 150ms ease-in-out;
+
+        &:hover {
+          opacity: 0.99;
+        }
+      }
+
+      & > .volumeControls {
+        width: 0;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: width 150ms ease-in-out, transform 150ms ease-in-out;
+      }
+
+      & > .volumeIcon:hover + .volumeControls,
+      & > .volumeControls:hover {
+        width: 5rem;
+        transform: scaleX(1);
+      }
+
+      & > p {
+        opacity: 0.99;
+        display: flex;
+        gap: 0.25rem;
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &:hover .controlsContainer,
+  &:focus-within .controlsContainer,
+  &.paused .controlsContainer {
+    opacity: 0.99;
+  }
+}

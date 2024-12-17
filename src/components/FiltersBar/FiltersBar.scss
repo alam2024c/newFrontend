@@ -1,0 +1,77 @@
+.filtersList {
+  margin-block: 1rem;
+  margin-inline: 1rem;
+  display: grid;
+
+  @media screen and (max-width: 500px) {
+    margin-inline: 0.25rem;
+  }
+
+  & > h4 {
+    display: flex;
+    justify-content: space-between;
+
+    color: #0f1914;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.1875rem;
+    margin-block-end: 1rem;
+
+    & > span {
+      color: #0099ab;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      line-height: 1.1875rem;
+      cursor: pointer;
+    }
+  }
+
+  & > ul {
+    display: flex;
+    gap: 0.62rem;
+    overflow: auto;
+
+    &.showAll {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+
+      @media screen and (max-width: 1440px) {
+        grid-template-columns: auto auto auto;
+      }
+
+      @media screen and (max-width: 1000px) {
+        grid-template-columns: auto auto;
+      }
+
+      @media screen and (max-width: 500px) {
+        grid-template-columns: auto;
+      }
+    }
+
+    & > li {
+      padding-inline: 2.5rem;
+      padding-block: 0.62rem;
+      border-radius: 1.5rem;
+      background-color: #eff0f0;
+
+      cursor: pointer;
+
+      color: #0f1914;
+      text-align: center;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      line-height: 1.1875rem;
+
+      text-wrap: nowrap;
+
+      &.chosen {
+        background-color: #0099ab;
+        color: #fff;
+      }
+    }
+
+    & > :first-child {
+      padding-inline: 1.75rem;
+    }
+  }
+}

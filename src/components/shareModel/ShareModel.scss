@@ -1,0 +1,94 @@
+.sharingButtons {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  & li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &.Twitter {
+      & button {
+        background-color: rgba(29, 161, 242, 0.1);
+      }
+      & p {
+        color: #1da1f2;
+      }
+    }
+
+    &.Facebook {
+      & button {
+        background-color: rgba(24, 119, 242, 0.1);
+      }
+      & p {
+        color: #1877f2;
+      }
+    }
+
+    &.Reddit {
+      & button {
+        background-color: rgba(255, 69, 0, 0.1);
+      }
+      & p {
+        color: #ff4500;
+      }
+    }
+
+    &.WhatsApp {
+      & button {
+        background-color: rgba(37, 211, 102, 0.1);
+      }
+      & p {
+        color: #25d366;
+      }
+    }
+
+    & button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+.share__link {
+  position: relative;
+
+  & button {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
+
+  & > input {
+    width: 100%;
+    border-radius: 0.25rem;
+    padding: 1rem 3.56rem 0.69rem 1.12rem;
+    margin-block: 1.75rem 2rem;
+    color: #8d9ca5;
+    border-color: #34434b26;
+  }
+
+  & > p {
+    position: absolute;
+    top: 4.5rem;
+    right: 0.5rem;
+    background-color: #2d394c;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+}

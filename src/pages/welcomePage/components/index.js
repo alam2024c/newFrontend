@@ -1,0 +1,10 @@
+export { default as StaticSection } from "./staticSection/staticSection";
+export { default as ActionSection } from "./actionSection/actionSection";
+export { default as RegisterForm } from "./registerForm/registerForm";
+export { default as LoginForm } from "./loginForm/loginForm";
+export { default as ForgetPassword } from "./forgetPassword";
+export { default as ChooseLanguage } from "./ChooseLanguage";
+export { default as ChooseColor } from "./ChooseColor";
+export { default as illustration } from "./illustration.png";
+export { default as alphabet } from "./alphabet 1.png";
+export { default as language } from "./language 1.png";

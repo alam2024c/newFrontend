@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: local("Poppins-Regular"),
+    url("./assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+}
+
+:root {
+  font-family: "Poppins-Regular";
+}
+
+$teal: #7cc9d1;
+$purple: #8a19cf;
+$blue: #1067cc;
+$green: #26d623;
+$yellow: #c2cd3a;
+$red: #d91e1e;
+
+@mixin currentColor($choice, $color) {
+  $currentColor: $color;
+
+  #root .#{$choice} {
+    color: $currentColor;
+  }
+}
+
+@include currentColor("teal", $teal);
+@include currentColor("purple", $purple);
+@include currentColor("blue", $blue);
+@include currentColor("green", $green);
+@include currentColor("yellow", $yellow);
+@include currentColor("red", $red);

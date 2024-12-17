@@ -1,0 +1,56 @@
+.reelsPage {
+  background: #000;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app_videos {
+  margin: auto;
+}
+.video {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  margin: auto;
+  background: #000;
+  /* width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  margin: auto;
+  display: flex;
+ */
+}
+.video_player {
+  /* background-color: black; */
+  height: 100%;
+  width: 100%;
+  /* height: auto !important; */
+  object-fit: fill;
+  border-radius: 20px;
+}
+
+@media (max-width: 450px) {
+  .app_videos {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .videoFooter {
+    position: absolute !important;
+    bottom: 10% !important;
+  }
+  .videoSidebar {
+    bottom: 8% !important;
+  }
+  .reelsPage > svg {
+    display: none !important;
+  }
+}
+
+/* .MuiSvgIcon-root.MuiSvgIcon-fontSizeLarge{
+    color: red;
+} */

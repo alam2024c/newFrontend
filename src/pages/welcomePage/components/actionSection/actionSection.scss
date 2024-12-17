@@ -1,0 +1,59 @@
+.action {
+  // margin-inline-start: 5rem;
+
+  @media screen and (max-width: 1060px) {
+    margin-inline-start: 0;
+  }
+
+  &__header {
+    color: #233142;
+    font-size: 30px;
+    font-weight: 600;
+
+    @media screen and (min-width: 300px) {
+      padding-inline-start: 1rem;
+      padding-block-start: 1rem;
+      margin-block-end: 1rem;
+      // color: #fff;
+    }
+  }
+
+  &__buttonsGroup {
+    display: grid;
+    gap: 2rem;
+    margin-block-start: 4rem;
+    margin-inline: 1rem;
+
+    color: #fff;
+
+    & > div {
+      display: inherit;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+
+      @media screen and (max-width: 350px) {
+        grid-template-columns: 1fr;
+      }
+
+      & button {
+        text-transform: uppercase;
+      }
+
+      & > :last-child {
+        border: 2px solid #0099ab;
+      }
+    }
+
+    & > .homeButton {
+      // text-wrap: nowrap;
+
+      & .rightArrowIcon {
+        padding-inline: 1rem;
+
+        @media screen and (max-width: 350px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
