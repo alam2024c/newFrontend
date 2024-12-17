@@ -476,7 +476,8 @@ figure.avatar-profile {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 /* Track */
@@ -488,13 +489,25 @@ figure.avatar-profile {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #1c93bb;
+  // background: #1c93bb;
+  background: #0099ab;
   border-radius: 10px;
 }
 
+// .EFFAA06   ::-webkit-scrollbar-thumb {
+//   background-color: #ffaa06 !important;
+
+// }
+
+
+// .ED91E1E  ::-webkit-scrollbar-thumb {
+//   background-color: #0099ab !important;
+
+// }
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1c93bb;
+  background: #0099ab;
 }
 
 .d-flex {
@@ -1108,6 +1121,8 @@ body.en * {
   direction: ltr !important;
 }
 
+
+
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   width: 49%;
@@ -1465,11 +1480,11 @@ body.dark {
 //   }
 // }
 
-@media (max-width: 771px) {
-  .icons-reels {
-    display: none !important;
-  }
-}
+// @media (max-width: 771px) {
+//   .icons-reels {
+//     display: none !important;
+//   }
+// }
 
 .__suggestions {
   padding: 10px;
@@ -1922,13 +1937,15 @@ body.dark {
 .EFFAA06
   :is(
     .friend__box__buttons button,
-    .asideRight button:not(.not__bg),
+    .asideRight button:not(.not__bg),   
     button.next,
     .bg-\[\#7CC9D1\],
     .border-\[\#7CC9D1\]:not(.w-full.undefined, .notcolor, .homeButton)
   ) {
   background-color: #ffaa06 !important;
 }
+
+
 
 .E000000
   :is(
@@ -2168,6 +2185,7 @@ button::first-letter {
 
 .chat__msg span {
   font-size: 18px !important;
+  color : black !important ;
 }
 
 .align-items-end {
@@ -2285,7 +2303,8 @@ button::first-letter {
   color: #fff !important;
 }
 
-.dark .chat__item.other .chat__item__content .chat__msg * {
+
+.dark .chat__item.other .chat__item__content * {
   color: #fff !important;
 }
 .dark .content__footer *,

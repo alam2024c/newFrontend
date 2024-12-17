@@ -231,9 +231,9 @@ export default function Navbar({ setCount, count }) {
             </a>{" "}
           </div>
           <a
-            onClick={() => {
-              window.location.reload();
-            }}
+            // onClick={() => {
+            //   window.location.reload();
+            // }}
             className="hidden md:flex justify-center items-center font-black capitalize cursor-pointer"
             style={{ position: "absolute", right: "365px", top: "40px" }}
           >
@@ -358,7 +358,7 @@ export default function Navbar({ setCount, count }) {
               )}
             </>
           )}
-          <button className="md:hidden w-12 h-12" onClick={openSideMenu}>
+          <button className="lg:hidden w-12 h-12" onClick={openSideMenu}>
             <img src={menu} alt="" />
           </button>{" "}
         </div>

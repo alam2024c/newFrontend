@@ -48,8 +48,10 @@ function App() {
     localStorage.getItem("darkMode") == "true" ? true : false
   );
   let colorTheme = localStorage.getItem("color-helnet");
+  let langApp = localStorage.getItem("lang");     
   const [count, setCount] = useState(0);
   useEffect(() => {
+    debugger
     var element = document.querySelector("body");
     if (isDark) {
       element.classList.add("dark");
@@ -57,6 +59,12 @@ function App() {
       element.classList.remove("dark");
     }
     element.classList.add(colorTheme);
+
+
+    element.classList.remove("ar");
+    element.classList.remove("an");    
+    element.classList.add(langApp);
+    
   }, []);
   const page = window.location.pathname.split("/")[1];
   useEffect(() => {

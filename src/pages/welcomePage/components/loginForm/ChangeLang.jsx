@@ -67,17 +67,21 @@ export default function ChangeLang({ pickRegister }) {
   }, [isRemembered]);
   const [t, i18n] = useTranslation();
 
+  
   const [isRegistering, setIsRegistering] = useState(false);
   const sectionText = t("WELCOME BACK!");
   const handleButtonClickDark = (e) => {
+    debugger
     setDropdownOpen(false);
     if (e === "en") {
       i18n.changeLanguage("en");
       document.body.classList.add("en");
+      document.body.classList.remove("ar");
       localStorage.setItem("lang", "en");
       localStorage.setItem("direction", "ltr");
     } else {
       i18n.changeLanguage("ar");
+          document.body.classList.add("ar");
       document.body.classList.remove("en");
       localStorage.setItem("lang", "ar");
       localStorage.setItem("direction", "rtl");
@@ -114,9 +118,11 @@ export default function ChangeLang({ pickRegister }) {
           className="inline-flex justify-center  rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
         >
           {i18n.language === "en" ? (
-            <img src={englishFlag} alt="English" className="w-7 " />
+            // <img src={englishFlag} alt="English" className="w-7 " />
+            <>EN</>
           ) : (
-            <img src={arabicFlag} alt="Arabic" className="w-7 " />
+            // <img src={arabicFlag} alt="Arabic" className="w-7 " />
+            <>AR</>
           )}
           {/* {i18n.language === "en" ? "English" : "Arabic"} */}
           {/* <svg
@@ -137,24 +143,26 @@ export default function ChangeLang({ pickRegister }) {
       {dropdownOpen && (
         <div
           className={`origin-top-right absolute ${
-            i18n.language === "en" ? "left-0" : "right-0 "
+            i18n.language === "ar" ? " right-0 " : " left-0 "
           } mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none`}
         >
           <div className="py-1">
-            <button
+            <button   hover:bg-gray-200 
               onClick={() => handleButtonClickDark("en")}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 gap-2 flex items-center"
+              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-200  dark:hover:bg-gray-800  gap-2 flex items-center"
             >
-              <img src={englishFlag} alt="English" className="h-5 w-5 mr-2" />{" "}
+              {/* <img src={englishFlag} alt="English" className="h-5 w-5 mr-2" />{" "} */}
               English
             </button>
             <button
               onClick={() => handleButtonClickDark("ar")}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex gap-2 items-center"
+              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:dark:bg-gray-800 hover:bg-gray-100 flex gap-2 items-center"
             >
-              <img src={arabicFlag} alt="Arabic" className="h-5 w-5 mr-2" />{" "}
+              {/* <img src={arabicFlag} alt="Arabic" className="h-5 w-5 mr-2" />{" "} */}
               {t("Arabic")}
             </button>
+
+      
           </div>
         </div>
       )}

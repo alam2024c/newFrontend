@@ -21,6 +21,7 @@ export default function SwitchButtonDark({ onClick, check }) {
     setEnabled(!enabled);
     // setEnabled(target.checked);
     console.log(enabled);
+    
     if (!enabled) {
       localStorage.setItem("darkMode", true);
       element.classList.add("dark");

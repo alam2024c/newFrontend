@@ -15,7 +15,13 @@
 
 .current-chatting-user {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+}
+
+.name-user
+{
+  margin-right: 10px;
+
 }
 
 .current-chatting-user p {
@@ -25,7 +31,7 @@
 }
 
 .seen {
-  margin: 0;
+  margin-right: 10px ;
   font-weight: 400;
   font-size: 14px;
   color: #707991;
@@ -89,6 +95,20 @@
   margin-left: 20px;
   background: #fff;
   padding: 1px;
+}
+.voice-message-container {
+  background-color: #91F48F; /* WhatsApp green */
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.voice-message-container {
+  position: relative;
+}
+
+.voice-message-container[dir="rtl"] .wavesurfer-cursor {
+  transform: translateX(100%) rotate(180deg); /* عكس المؤشر */
 }
 
 .chat__item__content {
@@ -157,6 +177,15 @@
 
 .sendNewMessage {
   background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+}
+.sendNewMessaged {
+  background-color: #d61616;
   display: flex;
   justify-content: space-between;
   padding: 14px;
@@ -352,4 +381,64 @@
     margin-right: 10px;
     background-color: #78e378 !important;
   }
+}
+
+
+.recording-ui {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.playback-ui {
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+
+.mic-button {
+  transition: all 0.3s ease-in-out;
+}
+
+.mic-button.recording {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px #f44336, 0 0 20px #f44336;
+  }
+  50% {
+    box-shadow: 0 0 20px #f44336, 0 0 40px #f44336;
+  }
+  100% {
+    box-shadow: 0 0 10px #f44336, 0 0 20px #f44336;
+  }
+}
+
+
+.content__footer {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+
+.audio-preview audio {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-danger {
+  color: red;
 }

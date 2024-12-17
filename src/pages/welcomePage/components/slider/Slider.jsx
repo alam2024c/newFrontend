@@ -12,6 +12,7 @@ export default function Slider({}) {
   const URL = import.meta.env.VITE_REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const getData = async () => {
+    debugger
     try {
       const res = await axios.get(`${URL}/api/post/get_reel_rondom`, {
         headers: {
@@ -30,7 +31,8 @@ export default function Slider({}) {
       <Swiper
         slidesPerView={3}
         spaceBetween={23}
-        centeredSlides={true}
+        // centeredSlides={true}
+        centeredSlides={false}
         pagination={{
           type: "fraction",
           clickable: true,

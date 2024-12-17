@@ -106,8 +106,9 @@ function UploadCity({ setChange, change, items }) {
       const res = await axios.get(`${URL_API}/api/get_country`, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Accept-Language": i18n.language,
+          "Content-Type": "application/json"
+          // abdallah 15/10/2024 to remove the arabic lang
+          // "Accept-Language": i18n.language,
         },
       });
       setCountries(res.data.data);
@@ -119,8 +120,9 @@ function UploadCity({ setChange, change, items }) {
       const res = await axios.get(`${URL_API}/api/get_city/${e}`, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Accept-Language": i18n.language,
+          "Content-Type": "application/json"
+          // abdallah 15/10/2024 to remove the arabic lang
+          // "Accept-Language": i18n.language,
         },
       });
       setcities(res.data.data);

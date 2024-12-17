@@ -102,24 +102,21 @@ export default function PostScholarship({ data, category }) {
             </div>
           )}
 
-          {data.references ? (
-            <a
-              className="flex gap-2 my-3 pb-3"
-              href={data?.references}
-              role="button"
-              target="_blank"
-              // change by abdallah  and i added the rel becouse it avoid transport the cretecal data to the new tab 
-              rel="noopener noreferrer"
-          
-            >
-              <img src={cloud} alt="" />
-              <p className="capitalize underline text-[#0099ab]">
-                {t("click here")}
-              </p>
-            </a>
-          ) : (
-            <></>
-          )}
+        
+          {data.url ? (
+          <a className="flex gap-2 my-3 pb-3" href={data?.url} role="button"
+                // change by abdallah  and i added the rel becouse it avoid transport the cretecal data to the new tab 
+                target="_blank" 
+    rel="noopener noreferrer"
+    >
+            <img src={cloud} alt="" />
+            <p className="capitalize underline text-[#0099ab]">
+              {t("click here")}
+            </p>
+          </a>
+        ) : (
+          <></>
+        )}
         </div>
       </div>
     </>

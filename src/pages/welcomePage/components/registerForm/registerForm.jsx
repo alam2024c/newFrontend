@@ -4,10 +4,10 @@ import { close, google } from "../../../../assets/images/icons";
 import "./RegisterForm.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { t } from "i18next";
+// import { t } from "i18next";
 import StaticSection from "../staticSection/staticSection";
 import ChangeLang from "../loginForm/ChangeLang";
-
+import { useTranslation } from "react-i18next";
 export default function RegisterForm({ pickLogin }) {
   const [userName, setUserName] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -61,7 +61,7 @@ export default function RegisterForm({ pickLogin }) {
   const [hasUppercase, setHasUppercase] = useState(false);
   const [hasLowercase, setHasLowercase] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
-
+  const [t, i18n] = useTranslation();
   const validatePassword = (value) => {
     const hasUppercaseLetter = /[A-Z]/.test(value);
     const hasLowercaseLetter = /[a-z]/.test(value);

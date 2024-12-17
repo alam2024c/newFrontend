@@ -104,6 +104,7 @@ export default function LoginForm({ pickRegister }) {
     };
   }, [menuRef]);
   return (
+    // <section className={`welcomePageWrapper ` + " bg-gradient-to-tr from-[#0099ab] to-[#e2e3ea] sm:hidden "}>
     <section className={`welcomePageWrapper `}>
       {/* <PasswordChanged /> */}
       <ChangeLang />
@@ -148,8 +149,8 @@ export default function LoginForm({ pickRegister }) {
                 handleSubmit(e);
               }}
             >
-              <p className="LoginForm__header">{t("Login to your Account")}</p>
-
+              <p  className="LoginForm__header   w-max">{t("Login to your Account")}</p>
+            	
               <Input
                 label={t("Email")}
                 inputID="loginEmail"

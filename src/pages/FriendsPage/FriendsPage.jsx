@@ -10,11 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "../../rtk/Api/Api";
 
+import ComplementaryAside from '../../components/complementaryAside/ComplementaryAside'
+import Online from '../../components/complementaryAside/Online'
+
 function FriendsPage({ activeTypeFriend, setActiveTypeFriend }) {
   const pageHeaders = [
     { activeType: "friend-request", title: "Requests" },
     { activeType: "Followers", title: "Followers" },
     { activeType: "Following", title: "Following" },
+    { activeType: "Online", title: "Active" },
+    { activeType: "ComplementaryAside", title: "Suggestions" },
     { activeType: "all-friends", title: "all" },
   ];
 
@@ -26,13 +31,18 @@ function FriendsPage({ activeTypeFriend, setActiveTypeFriend }) {
     <div className="frinds-page max-w-4xl m-auto px-5 md:px-0">
       <div className="typeArticleAndSearches row  mx-3 mb-4">
         {pageHeaders.map((header, index) => (
-          <Pageheader
-            key={index}
-            setActiveTypeFriend={setActiveTypeFriend}
-            activeType={header.activeType}
-            activeTypeFriend={activeTypeFriend}
-            title={header.title}
-          />
+          <div
+            className={` ${(header.activeType === "Online" || header.activeType === "ComplementaryAside") ? "block lg:hidden" : ""
+              }`}
+          >
+            <Pageheader
+              key={index}
+              setActiveTypeFriend={setActiveTypeFriend}
+              activeType={header.activeType}
+              activeTypeFriend={activeTypeFriend}
+              title={header.title}
+            />
+          </div>
         ))}
       </div>
 
@@ -40,8 +50,13 @@ function FriendsPage({ activeTypeFriend, setActiveTypeFriend }) {
         <Friends />
       ) : activeTypeFriend === "Followers" ? (
         <Followers />
+      ) : activeTypeFriend === "ComplementaryAside" ? (
+        <div className={` ${( activeTypeFriend === "ComplementaryAside") ? "block lg:hidden" : ""}`}> <ComplementaryAside /></div>
       ) : activeTypeFriend === "suggestions" ? (
         <Suggestions />
+      ) : activeTypeFriend === "Online" ? (
+        <div className={` ${(activeTypeFriend === "Online" ) ? "block lg:hidden" : ""}`}>  <Online /></div>
+       
       ) : (
         activeTypeFriend === "request" && <FriendRequest />
       )}

@@ -20,14 +20,14 @@ export default function PostEvent({ data, category }) {
       <div className="my-2 p-md-4">
         <div className="mb-3">
           {data?.organization && (
-            <h3 className="font-black text-xl text-[#0099ab] d-flex align-items-center gap-3">
+            <h3 className=" text-[#0099ab] d-flex align-items-center gap-3">
               <TextPost text={data?.organization} />{" "}
             </h3>
           )}
         </div>
         <div className="mb-3">
           {data?.name && (
-            <h3 className="font-black text-xl text-[#0099ab] d-flex align-items-center gap-3">
+            <h3 className=" text-[#0099ab] d-flex align-items-center gap-3">
               <TextPost text={data?.name} />{" "}
             </h3>
           )}

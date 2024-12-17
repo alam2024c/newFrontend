@@ -62,7 +62,7 @@ export default function Modal({
                       <div className="flex justify-between items-center text-white bg-[#7CC9D1] p-6">
                         <div className="flex gap-3">
                           <button className="w-4" onClick={backFunc}>
-                            <img src={back1} alt="" role="button" />
+                            <img src={ back1} alt="" role="button"  style={{transform: isArabic ? "rotate(180deg)" : ""}}/>
                           </button>
 
                           <p>{title}</p>
@@ -85,7 +85,9 @@ export default function Modal({
                   )} */}
 
                   <div
-                    className={`overflow-y-scroll  md:max-h-[70dvh] max-h-[90dvh] no-scrollbar ${childrenPadding}`}
+                    // className={`overflow-y-scroll  md:max-h-[70dvh] max-h-[90dvh] no-scrollbar ${childrenPadding}`}
+                    className={`overflow-y-scroll  md:max-h-[100dvh] max-h-[90dvh]  ${childrenPadding}`}
+
                   >
                     {children}
                   </div>

@@ -93,7 +93,7 @@ function ShowComment({ setCount, count }) {
             <div className="m-auto max-w-4xl w-full">
               <SinglePost data={item} />
               <div
-                className="bg-white p-2 rounde"
+                className="bg-white p-2 rounde mb-4  shadow"
                 style={{ borderRadius: "20px" }}
               >
                 <SingleComment user={user} data={comment} />

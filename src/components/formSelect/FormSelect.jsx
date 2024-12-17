@@ -13,8 +13,18 @@ function FormSelect({
   required = false,
   error,
 }) {
+  // added by abdallah :
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState("");
+
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
   const [date, setDate] = useState("");
   const [t] = useTranslation();
+
+  // by abdallah :
+  
   useEffect(() => {
     if (post?.date) {
       const originalDate = post?.date;
@@ -28,21 +38,72 @@ function FormSelect({
       setDate(rearrangedDate);
     }
   }, [post]);
+
+  // added by abdallah :
+  // const handleDateChange = (inputName, date) => {
+  //   // Format the date
+  //   const day = date.getDate().toString().padStart(2, "0");
+  //   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-indexed
+  //   const year = date.getFullYear();
+  //   const formattedDate = `${year}-${month}-${day}`;
+  
+  //   // Update formValues based on whether it's the start date or end date
+  //   if (inputName === "start_date") {
+  //     setStartDate(date);
+  //     setFormValues((prevValues) => ({
+  //       ...prevValues,
+  //       start_date: formattedDate,
+  //     }));
+  //   } else if (inputName === "end_date") {
+  //     setEndDate(date);
+  //     setFormValues((prevValues) => ({
+  //       ...prevValues,
+  //       end_date: formattedDate,
+  //     }));
+  //   }
+  // };
+
   const handleDateChange = (inputName, date) => {
     // Format the date
     const day = date.getDate().toString().padStart(2, "0");
     const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-indexed
     const year = date.getFullYear();
-    // Format the date as MM-DD-YYYY
-    setDate(date);
     const formattedDate = `${year}-${month}-${day}`;
-
-    // Update the state with the formatted date
-    setFormValues((prevValues) => ({
-      ...prevValues,
-      [inputName]: formattedDate,
-    }));
+  
+    // Update formValues based on whether it's the start date or end date
+    if (inputName === "start_date") {
+      setStartDate(date);
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        start_date: formattedDate,
+      }));
+    } else if (inputName === "end_date") {
+      setEndDate(date);
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        end_date: formattedDate,
+      }));
+    }
   };
+
+
+  
+  // const handleDateChange = (inputName, date) => {
+  //   // Format the date
+  //   const day = date.getDate().toString().padStart(2, "0");
+  //   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-indexed
+  //   const year = date.getFullYear();
+  //   // Format the date as MM-DD-YYYY
+  //   setDate(date);
+  //   const formattedDate = `${year}-${month}-${day}`;
+
+  //   // Update the state with the formatted date
+  //   setFormValues((prevValues) => ({
+  //     ...prevValues,
+  //     [inputName]: formattedDate,
+  //   }));
+  // };
+
   const handleInputChange = (inputName, value, event) => {
     if (event) {
       event.target.style.height = "auto";
@@ -171,19 +232,29 @@ function FormSelect({
                 <span className="text-danger ">{errorMsg}</span>
               ))}
             </>
-          ) : tap.type === "date" ? (
-            <>
-              <DatePicker
-                showIcon
-                // className="px-5"
-                selected={date}
-                onChange={(date) => handleDateChange(tap.state, date)}
-              />
-              {error?.[tap?.state]?.map((errorMsg, index) => (
-                <span className="text-danger ">{errorMsg}</span>
-              ))}
-            </>
-          ) : (
+          ) : tap.type === "date" && tap.state === "start_date" ? (
+  <>
+    <DatePicker
+      selected={startDate} // Use startDate state
+      onChange={(date) => handleDateChange("start_date", date)} // Pass "start_date" explicitly
+    />
+    {error?.[tap?.state]?.map((errorMsg, index) => (
+      <span className="text-danger " key={index}>{errorMsg}</span>
+    ))}
+  </>
+) : tap.type === "date" && tap.state === "end_date" ? (
+  <>
+  {/* added by abdallah */}
+    <DatePicker
+
+      selected={endDate} // Use endDate state
+      onChange={(date) => handleDateChange("end_date", date)} // Pass "end_date" explicitly
+    />
+    {error?.[tap?.state]?.map((errorMsg, index) => (
+      <span className="text-danger " key={index}>{errorMsg}</span>
+    ))}
+  </>
+) : (
             <>
               {/* {post?.[tap?.state]}as */}
               <>

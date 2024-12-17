@@ -104,16 +104,24 @@ export default function PostExpirment({ data, category }) {
           </div>
         )}
 
-        {data.references ? (
-          <a
-            className="flex gap-2 my-3 pb-3"
-            href={data?.references}
-            role="button"
-            target="_blank"
-                  // change by abdallah  and i added the rel becouse it avoid transport the cretecal data to the new tab 
-                 
+        {data.references && (
+          <div className="my-4 d-flex align-items-center gap-1">
+            <span className="d-block fs-5" style={{ color: "#0099AB" }}>
+              {t("References")} :
+            </span>
+            <p className=" p-1 text-ellipsis bg-gradient-to-b from-black to-slate-200 text-transparent bg-clip-text">
+              {data.references}
+            </p>
+          </div>
+        )}
+
+
+        {data.url ? (
+          <a className="flex gap-2 my-3 pb-3" href={data?.url} role="button"
+                // change by abdallah  and i added the rel becouse it avoid transport the cretecal data to the new tab 
+                target="_blank" 
     rel="noopener noreferrer"
-          >
+    >
             <img src={cloud} alt="" />
             <p className="capitalize underline text-[#0099ab]">
               {t("click here")}

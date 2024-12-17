@@ -132,12 +132,11 @@
   // border-radius: 10px;
 }
 .isOnline {
-  position: absolute;
   width: 15px;
   height: 15px;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 29px; 
+  right: 40px;
   background-color: red;
   border-radius: 50%;
   border: 2px solid #fff;

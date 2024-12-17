@@ -4,6 +4,8 @@ import "./chatContent.css";
 import Avatar from "../ChatList/Avatar";
 import ChatItem from "./ChatItem";
 import { BsEmojiSmile, BsThreeDotsVertical } from "react-icons/bs";
+import { FaMicrophoneAlt } from "react-icons/fa";
+
 import Picker from "emoji-picker-react";
 import {
   IoSend,
@@ -54,6 +56,71 @@ function ChatContent({
     token,
     userChat?.user_id
   );
+
+  const { i18n } = useTranslation(); // Use the translation hook
+
+  const currentLanguage = i18n.language;
+
+  const mediaRecorderRef = useRef(null);
+
+
+  const [isRecording, setIsRecording] = useState(false);
+const [audioBlob, setAudioBlob] = useState(null);
+
+let mediaRecorder;
+
+const startRecording = () => {
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then((stream) => {
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      mediaRecorderRef.current.start();
+      setIsRecording(true);
+
+      const audioChunks = [];
+      mediaRecorderRef.current.ondataavailable = (event) => {
+        audioChunks.push(event.data);
+      };
+
+      mediaRecorderRef.current.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+        setAudioBlob(audioBlob);
+        setIsRecording(false);
+
+        // Trigger download
+        const url = URL.createObjectURL(audioBlob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'voice_message.mp3'; 
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(url); // Clean up
+        document.body.removeChild(a);
+      };
+    })
+    .catch((error) => {
+      console.error('Error accessing microphone:', error);
+    });
+};
+
+
+
+
+const stopRecording = () => {
+  if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+  }
+};
+
+useEffect(() => {
+  return () => {
+      if (mediaRecorderRef.current) {
+          mediaRecorderRef.current.stream.getTracks().forEach((track) => track.stop());
+      }
+  };
+}, []);
+
+
 
   useEffect(() => {
     // console.log(deleteMessage_id, "deleteMessage_id");
@@ -125,6 +192,8 @@ function ChatContent({
 
   const [showEmoji, setShowEmoji] = useState(false);
   const [text, setText] = useState("");
+  const [currentPlayingId, setCurrentPlayingId] = useState(null);
+  const [stopPreviousInstance, setStopPreviousInstance] = useState(null);
 
   const addEmoji = (emojiObject) => {
     let sym = emojiObject.unified.split("-");
@@ -159,6 +228,10 @@ function ChatContent({
   };
 
   const sendMessage = async () => {
+    if (!text && !audioBlob && file.length === 0) {
+      console.error("No content to send!");
+      return;
+    }
     setLoading(true);
     let temporaryMsgId = Math.floor(Math.random() * 100);
     const data = {
@@ -211,6 +284,9 @@ function ChatContent({
     for (let i = 0; i < file.length; i++) {
       formData.append("file", file[i]);
     }
+    if (audioBlob) formData.append("voice", audioBlob, "voice_message.mp3"); 
+    // console.log('Recorded audioBlob type a: ', audioBlob.type);
+
     console.log(data);
     try {
       const res = await axios.post(
@@ -223,7 +299,10 @@ function ChatContent({
           },
         }
       );
+     setText("");
+      setAudioBlob(null);
       setFile([]);
+
       setSeen(false);
       if (chatMobile != "true") {
         setChangeContact(res.data);
@@ -350,7 +429,7 @@ function ChatContent({
                 />
                 <div className="name-user">
                   <p> {userChat?.first_name + " " + userChat?.last_name} </p>
-                  {/* <span className="seen">last seen 5 mins ago </span> */}
+                  <span className="seen"> {userIsOnline == "active" ? t("Avilable") : t("Unavilable now") } </span>
                 </div>
               </div>
               <div className="d-flex align-items-center gap-3">
@@ -410,6 +489,12 @@ function ChatContent({
                         image={message.image}
                         userChat={userChat}
                         seen={seen}
+                        language={currentLanguage} 
+                        currentPlayingId={currentPlayingId}
+                        setCurrentPlayingId={setCurrentPlayingId}
+                        stopPreviousInstance={stopPreviousInstance} // Callback to stop the current instance
+                        setStopPreviousInstance={setStopPreviousInstance} // Setter for the callback
+
                       />
                     ))}
                   </div>
@@ -484,6 +569,9 @@ function ChatContent({
               sendMessage();
             }}
           >
+
+
+
             <div className="d-flex align-items-end gap-2 mb-4">
               <div
                 className=""
@@ -498,7 +586,7 @@ function ChatContent({
                     <Picker
                       pickerStyle={{ width: "100%" }}
                       onEmojiClick={addEmoji}
-                      style={{
+                         style={{
                         height: "398px",
                         width: "80%",
                         position: "absolute",
@@ -509,7 +597,7 @@ function ChatContent({
                   </div>
                 )}
               </div>
-              <div
+              {/* <div
                 className="addFiles d-flex align-items-start gap-2 "
                 style={{ alignItems: "flex-end" }}
               >
@@ -527,26 +615,92 @@ function ChatContent({
                     htmlFor="file"
                   />
                 </label>
-              </div>
+              </div> */}
+              
+                 {/* Voice Recording */}
+  {/* <div className=" d-flex align-items-end gap-2"  style={{ alignItems: "flex-end" }}>
+  <FaMicrophoneAlt
+      onClick={isRecording ? stopRecording : startRecording}
+      style={{
+        fontSize: "20px",
+        cursor: "pointer",
+        color: isRecording ? "red" : "black",
+      }}
+    />
+
+
+              </div> */}
             </div>
+
+
+
             <div className="sendNewMessage d-flex">
-              <textarea
-                onKeyDown={handleKeyDown}
-                // style={{ height: textareaHeight }}
-                ref={textareaRef}
-                value={text}
-                style={{ height: "40px", maxHeight: "25vh" }}
-                onChange={(e) => {
-                  setText(e.target.value);
-                  adjustTextareaHeight(e);
-                }}
-                placeholder={t("Message")}
-                className="w-full bg-transparent outline-none resize-none text-lg"
-                cols="30"
-                rows="2"
-              ></textarea>
-            </div>
-            {text || file.length > 0 ? (
+  <textarea
+    onKeyDown={handleKeyDown}
+    ref={textareaRef}
+    value={text}
+    style={{ height: "40px", maxHeight: "25vh" }}
+    onChange={(e) => {
+      setText(e.target.value);
+      adjustTextareaHeight(e);
+    }}
+    placeholder={t("Message")}
+    className="w-full bg-transparent outline-none resize-none text-lg"
+    cols="30"
+    rows="2"
+  ></textarea>
+</div>
+
+{/* Conditionally render the file and voice icons or the submit button */}
+{text || file.length > 0 || audioBlob ? (
+  // Submit button
+  <button
+    type="submit"
+    disabled={loading}
+    className="send not__bg mb-3 align-items-end  d-flex"
+  >
+    <IoSend className="font-xl cursor-pointer" />
+  </button>
+) : (
+  // File and voice icons
+  <div className="d-flex align-items-end gap-2 mb-4 ml-2">
+    <div
+      className="addFiles d-flex align-items-start gap-2 "
+      
+    >
+      <input
+        type="file"
+        onChange={handleFileChange}
+        className="d-none"
+        accept=".png,.jpg,.jpeg"
+        id="file"
+      />
+      <label htmlFor="file">
+        <AiOutlinePlus
+          className="cursor-pointer font-lg"
+          htmlFor="file"
+        />
+      </label>
+    </div>
+    <div
+      className=" d-flex align-items-end gap-2"
+      style={{ alignItems: "flex-end" }}
+    >
+      <FaMicrophoneAlt
+        onClick={isRecording ? stopRecording : startRecording}
+        style={{
+          fontSize: "20px",
+          cursor: "pointer",
+          color: isRecording ? "red" : "black",
+        }}
+      />
+    </div>
+  </div>
+)}
+
+
+
+            {/* {text || file.length > 0 || audioBlob ? (
               <button
                 type="submit"
                 disabled={loading}
@@ -563,7 +717,7 @@ function ChatContent({
               >
                 <IoSend className="font-xl cursor-pointer" />
               </button>
-            )}
+            )} */}
           </form>
         </>
       )}

@@ -59,7 +59,8 @@ function Online() {
           <h5 className="capitalize font-black">{t("Active")}</h5>
         </div>
 
-        <div className="grid gap-4 overflow-y-scroll no-scrollbar max-h-96">
+        {/* <div className="grid gap-4 overflow-y-scroll no-scrollbar max-h-96"> */}
+        <div className="grid gap-4 overflow-y-scroll max-h-96">
           {contactOnline.map((contact) => (
             <div
               className="flex items-center gap-2 curosor-pointer"

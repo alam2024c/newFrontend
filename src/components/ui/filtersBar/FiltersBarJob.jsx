@@ -31,7 +31,8 @@ export default function FiltersBarJob({ filters, width, setFilterCategory }) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [i18n.language]);
+  
   const containerRef = useRef(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -65,10 +66,31 @@ export default function FiltersBarJob({ filters, width, setFilterCategory }) {
     setIsOpen(true);
   }
 
+  // added by abdallah 11/6/2024
+ // إلغاء تفعيل السحب عند الإفلات خارج العنصر
+ useEffect(() => {
+   
+  const handleMouseUpOutside = () => {
+    if (isMouseDown) setIsMouseDown(false);
+  };
+
+  window.addEventListener("mouseup", handleMouseUpOutside);
+  window.addEventListener("mouseleave", handleMouseUpOutside);
+
+  return () => {
+    window.removeEventListener("mouseup", handleMouseUpOutside);
+    window.removeEventListener("mouseleave", handleMouseUpOutside);
+  };
+}, [isMouseDown]);
+
+
+
   return (
     <>
       <nav
-        className={`hidden md:flex gap-2 overflow-x-scroll no-scrollbar ${
+        // className={`hidden md:flex gap-2 overflow-x-scroll no-scrollbar ${
+          className={`hidden md:flex gap-2 overflow-x-scroll  ${
+
           width ? width : "md:max-w-4xl"
         }`}
         ref={containerRef}

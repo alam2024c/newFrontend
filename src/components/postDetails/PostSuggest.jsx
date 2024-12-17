@@ -21,7 +21,7 @@ export default function PostSuggest({ data, category }) {
         <div className="flex gap-2 items-center">
           {" "}
           {data.project_title ? (
-            <h3 className="font-black text-xl text-[#0099ab] w-100">
+            <h3 className=" text-[#0099ab] w-100">
               {" "}
               <TextPost text={data?.project_title} />{" "}
             </h3>

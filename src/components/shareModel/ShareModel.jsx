@@ -47,6 +47,8 @@ export default function ShareModel({
       share_id: data?.id,
       classification_id: 8,
       category_id: 1,
+      // classification_id: data?.classification_id,
+      // category_id: data?.category_id,
       privacy: "public",
     };
     try {

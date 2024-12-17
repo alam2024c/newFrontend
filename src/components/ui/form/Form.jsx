@@ -218,7 +218,7 @@ export default function Form({
           <>
             <form
               onSubmit={handleClick}
-              className="grid gap-4 my-2"
+              className=" block lg:grid  gap-4 my-2"
               id="buttonshare"
             >
               {/* // to change the category */}

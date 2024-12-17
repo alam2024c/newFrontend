@@ -21,7 +21,7 @@ export default function ActionSection({ pickLogin, pickRegister }) {
 
   return (
     <section className="action">
-      <h3 className="action__header">{t("Sign up now for free and interact with fellow researchers !")}</h3>
+      <h3 className="action__header text-[27px] text-center	">{t("Sign up now for free and interact with fellow researchers !")}</h3>
 
       <Slider data={data} />
 
@@ -29,6 +29,8 @@ export default function ActionSection({ pickLogin, pickRegister }) {
         <div className="d-flex flex-wrap w-100">
           <Button
             className="notcolor"
+            color="#0099ab"
+            backgroundColor="#e2e3ea"
             children={t("Register")}
             width={"buttonsection"}
             onClick={() => navigate("/register")}

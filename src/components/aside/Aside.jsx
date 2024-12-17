@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import customer from "../../assets/images/customer.png";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout, stateCurrent } from "../../rtk/slices/authSlice";
@@ -161,7 +162,10 @@ export default function Aside({ isOpen, close = () => {} }) {
       {user ? (
         <aside
           role="navigation"
-          className="bg-white sticky top-24 overflow-y-scroll no-scrollbar aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+          // className="bg-white sticky top-24 overflow-y-scroll no-scrollbar aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+          // className="bg-white sticky top-24 overflow-y-scroll  aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+          className= "bg-white sticky top-24 overflow-y-scroll aside-left  lg:max-h-[85dvh]  h-full max-h-full w-full lg:w-[300px]"
+
         >
           {menuDataUser.map((menu) => (
             <dl
@@ -236,7 +240,9 @@ export default function Aside({ isOpen, close = () => {} }) {
       ) : (
         <aside
           role="navigation"
-          className="bg-white sticky top-24 overflow-y-scroll no-scrollbar aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+          // className="bg-white sticky top-24 overflow-y-scroll no-scrollbar aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+          className="bg-white sticky top-24 overflow-y-scroll  aside-left max-h-[100dvh] lg:max-h-[85dvh]"
+
         >
           {menuData.map((menu) => (
             <dl
@@ -261,15 +267,23 @@ export default function Aside({ isOpen, close = () => {} }) {
                     }
                   }}
                 >
-                  <button
+                  {/* <button
                     className={`flex justify-start items-center gap-3 capitalize truncate w-fit pe-8 font-black ${
                       activeLabel === item.label ? "active" : "text-black"
                     }`}
                   >
                     {item.icon}
                     {/* <img className="w-6 h-6" src={item.icon} alt={item.label} /> */}
-                    {t(item.label)}{" "}
-                  </button>
+                    {/* {t(item.label)} */}
+                    {/* {" "} */}
+                  {/* </button> */}
+
+                  <a href={item.path} className={`flex justify-start items-center gap-3 capitalize truncate w-fit pe-8 font-black ${current__page === item.label ? "active" : "text-black"}`}>
+  {item.icon}
+  {t(item.label)}
+</a>
+
+
                 </dd>
               ))}
             </dl>

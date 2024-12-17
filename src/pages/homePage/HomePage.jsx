@@ -43,7 +43,7 @@ export default function HomePage({ setCount, count }) {
     <div className="max-w-[1920px] m-auto">
       <Navbar setCount={setCount} count={count} />
       <section className="flex pages justify-between gap-2 lg:mx-3 p-1">
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Aside />
         </div>
         <main className="w-full">
@@ -57,6 +57,10 @@ export default function HomePage({ setCount, count }) {
             <FriendsPage activeTypeFriend={"Following"} />
           ) : name == "friend-request" ? (
             <FriendsPage activeTypeFriend={"request"} />
+          ) : name == "Online" ? (
+            <FriendsPage activeTypeFriend={"Online"} />
+          ) : name == "ComplementaryAside" ? (
+            <FriendsPage activeTypeFriend={"ComplementaryAside"} />
           ) : name == "profile" ? (
             <Portfolio />
           ) : name == "content-request" ? (
@@ -100,39 +104,39 @@ export default function HomePage({ setCount, count }) {
           ) : name == "policyAndPrivacy" ? (
             <PolicyAndPrivacy />
           ) : // )
-          // :
-          // name == "support" ? (
-          //   <Support />
-          name == "policyAndPrivacy" ? (
-            <PolicyAndPrivacy />
-          ) : name == "privacySettings" ? (
-            <>
-              <UpdateInfo />
-              <ChangePassword />
-            </>
-          ) : name == "policyAndPrivacy" ? (
-            <PolicyAndPrivacy />
-          ) : name == "userCV" ? (
-            <UserCV />
-          ) : name == "userCV" ? (
-            <UserCV />
-          ) : name == "friends" ? (
-            <FriendsPage />
-          ) : name == "search" ? (
-            <Search />
-          ) : name == "categorized-Posts" ? (
-            <CategorizedPosts data={posts} />
-          ) : name == "articles" ? (
-            <Article data={posts} />
-          ) : name == "news" ? (
-            <News data={posts} />
-          ) : name == "summaries" ? (
-            <Summeries data={posts} />
-          ) : name == "notifcations" ? (
-            <Notifcations setCount={setCount} count={count} />
-          ) : (
-            <Posts data={posts} />
-          )}
+            // :
+            // name == "support" ? (
+            //   <Support />
+            name == "policyAndPrivacy" ? (
+              <PolicyAndPrivacy />
+            ) : name == "privacySettings" ? (
+              <>
+                <UpdateInfo />
+                <ChangePassword />
+              </>
+            ) : name == "policyAndPrivacy" ? (
+              <PolicyAndPrivacy />
+            ) : name == "userCV" ? (
+              <UserCV />
+            ) : name == "userCV" ? (
+              <UserCV />
+            ) : name == "friends" ? (
+              <FriendsPage />
+            ) : name == "search" ? (
+              <Search />
+            ) : name == "categorized-Posts" ? (
+              <CategorizedPosts data={posts} />
+            ) : name == "articles" ? (
+              <Article data={posts} />
+            ) : name == "news" ? (
+              <News data={posts} />
+            ) : name == "summaries" ? (
+              <Summeries data={posts} />
+            ) : name == "notifcations" ? (
+              <Notifcations setCount={setCount} count={count} />
+            ) : (
+              <Posts data={posts} />
+            )}
         </main>
         <div className="hidden  b2-5xl">
           <ComplementaryAside />

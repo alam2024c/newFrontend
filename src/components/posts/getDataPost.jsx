@@ -2,6 +2,7 @@ import { set } from "lodash";
 import { useState, useEffect } from "react";
 import { logout } from "../../rtk/slices/authSlice";
 //get posts
+
 export const getDataPost = (
   initialPage,
   token,
@@ -46,6 +47,7 @@ export const getDataPost = (
       const data = await response.json();
       if (data.status === 429) {
         // Implement backoff logic here
+        console.log("too many at the post data")
         await new Promise((resolve) => setTimeout(resolve, 5000)); // Wait for 5 seconds
         fetchData();
         return;
@@ -1100,44 +1102,88 @@ export const getDataProfile = (token, api, change, params, lang) => {
   const URL = import.meta.env.VITE_REACT_APP_API_KEY;
   const [loadingProfile, setLoading] = useState(false);
   const [items, setItems] = useState([]);
+
   useEffect(() => {
     setLoading(true);
-    const fetchData = async () => {
-      const response = await fetch(`${URL}/api/${api}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Accept-Language": lang,
-        },
-      });
 
-      const data = await response.json();
-      // if (data.status === 429) {
-      setLoading(false);
-      //   // Implement backoff logic here
-      //   await new Promise((resolve) => setTimeout(resolve, 5000)); // Wait for 5 seconds
-      //   fetchData();
-      //   return;
-      // }
-      setItems(data.data);
-      // if (page > 0) {
-      //   setItems((prevItems) => [...prevItems, ...data?.data]);
-      // } else {
-      //   setItems([...data?.data]);
-      // }
+    const fetchData = async (retryCount = 0) => {
+      try {
+        const response = await fetch(`${URL}/api/${api}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Accept-Language": lang,
+          },
+        });
 
-      // if (data?.data?.length === 0) {
-      //   setHasMore(false);
-      // }
+        if (response.status === 429) {
+          // Backoff logic with a maximum retry count of 3
+          await new Promise((resolve) => setTimeout(resolve, 5000)); // Wait for 5 seconds
+          fetchData(retryCount + 1); // Retry fetch
+          return;
+        }
+
+        const data = await response.json();
+        setItems(data.data);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchData();
   }, [change, params]);
 
   return { items, loadingProfile };
 };
 
+
+
+// export const getDataProfile = (token, api, change, params, lang) => {
+//   const URL = import.meta.env.VITE_REACT_APP_API_KEY;
+//   const [loadingProfile, setLoading] = useState(false);
+//   const [items, setItems] = useState([]);
+//   useEffect(() => {
+//     setLoading(true);
+//     const fetchData = async () => {
+//       const response = await fetch(`${URL}/api/${api}`, {
+//         method: "GET",
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//           "Content-Type": "application/json",
+//           "Accept-Language": lang,
+//         },
+//       });
+
+//       const data = await response.json();
+//       // if (data.status === 429) {
+//       setLoading(false);
+//       //   // Implement backoff logic here
+//       //   await new Promise((resolve) => setTimeout(resolve, 5000)); // Wait for 5 seconds
+//       //   fetchData();
+//       //   return;
+//       // }
+//       setItems(data.data);
+//       // if (page > 0) {
+//       //   setItems((prevItems) => [...prevItems, ...data?.data]);
+//       // } else {
+//       //   setItems([...data?.data]);
+//       // }
+
+//       // if (data?.data?.length === 0) {
+//       //   setHasMore(false);
+//       // }
+//     };
+//     fetchData();
+//   }, [change, params]);
+
+//   return { items, loadingProfile };
+// };
+
 //get product news
+
 export const getDataNews = (
   initialPage,
   token,
@@ -2124,6 +2170,7 @@ export const getDataMessage = (initialPage, token, id) => {
         }
       );
       const data = await response.json();
+      console.log(data , "test the get messages ")
       if (page > 1) {
         setItems((prevData) => [...data?.messages?.reverse(), ...prevData]);
         // setItems((prevItems) => [...prevItems, ...data.contacts]);

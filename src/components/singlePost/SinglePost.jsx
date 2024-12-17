@@ -153,7 +153,7 @@ export default function SinglePost({
       //     : {}
       // }
       className="bg-blue-50 text-black  rounded-2xl px-4 shadow w-full 
-      max-w-4xl"
+      max-w-4xl  bg-white  mb-4"  
   
     >
       {/* post header */}
@@ -257,8 +257,42 @@ export default function SinglePost({
                   <PostDonations data={data?.post_share?.post_donation} />
                 ) : data?.post_share?.post_project ? (
                   <PostProject data={data?.post_share?.post_project} />
+                  
                 ) : data?.post_share?.post_trainer ? (
                   <PostTrain data={data?.post_share?.post_trainer} />
+
+                ) : data?.post_share?.post_code ? (
+                  <PostCode data={data?.post_share?.post_code} />
+
+                ) : data?.post_share?.post_essay? (
+                  <PostEssay data={data?.post_share?.post_essay} />
+
+                ) : data?.post_share?.post_book? (
+                  <PostBook data={data?.post_share?.post_book} />
+
+                ) : data?.post_share?.post_product? (
+                  <PostProduct data={data?.post_share?.post_product} />
+
+                ) : data?.post_share?.post_quotation? (
+                  <PostQoutation data={data?.post_share?.post_quotation} />
+
+                ) : data?.post_share?.post_event? (
+                  <PostEvent data={data?.post_share?.post_event} />
+
+                ) : data?.post_share?.post_official? (
+                  <PostOfficial data={data?.post_share?.post_official} />
+
+                ) : data?.post_share?.post_story? (
+                  <PostsStory data={data?.post_share?.post_story} />
+
+                ) : data?.post_share?.post_researcher_story? (
+                  <PostResearcherStory data={data?.post_share?.post_researcher_story} />
+
+                ) : data?.post_share?.post_congratulation? (
+                  <PostCongratulations data={data?.post_share?.post_congratulation} />
+
+                ) : data?.post_share?.post_questionnaire ? (
+                  <PostQuestionnaire data={data?.post_share?.post_questionnaire} />
                 ) : (
                   data?.post_share?.post_suggest && (
                     <PostSuggest

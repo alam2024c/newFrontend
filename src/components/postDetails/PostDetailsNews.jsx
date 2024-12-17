@@ -51,6 +51,8 @@ export default function PostDetailsNews({ data, category }) {
           </div>
         )}
         {data.details && <TextPost text={data?.details} />}
+        
+        
         {data.url ? (
           <a className="flex gap-2 pb-3" href={data?.url} role="button"      
            // change by abdallah  and i added the rel becouse it avoid transport the cretecal data to the new tab 

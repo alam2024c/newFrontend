@@ -9,6 +9,7 @@
   line-height: normal;
   display: grid;
   align-items: center;
+  align-content: center;
 
   // &.rtl {
   //   direction: rtl;
@@ -71,4 +72,8 @@
       }
     }
   }
+}
+
+body.ar  .welcomePageWrapper {
+  background-image: linear-gradient(90deg, #0099ab  50%, #e2e3ea 50%);
 }

@@ -1,6 +1,8 @@
 import { eyeClose, eyeOpen } from "../../../assets/images/icons";
 import { useEffect, useState } from "react";
 import "./Input.scss";
+import { useTranslation } from "react-i18next";
+
 
 export default function Input({
   inputID,
@@ -19,13 +21,13 @@ export default function Input({
   handleChange = () => {},
   ...rest
 }) {
-  const [direction, setDirection] = useState("ltr");
-
+  // const [direction, setDirection] = useState("ltr");
+  const [t, i18n] = useTranslation();
   const [isShown, setIsShown] = useState(false);
 
-  useEffect(() => {
-    setDirection(localStorage.getItem("direction"));
-  }, []);
+  // useEffect(() => {
+  //   setDirection(localStorage.getItem("direction"));
+  // }, []);
 
   const togglePasswordVisibility = () => {
     setIsShown(!isShown);
@@ -57,7 +59,7 @@ export default function Input({
       {type === "password" && (
         <>
           <img
-            className={`showPasswordIcon ${direction}`}
+            className={`showPasswordIcon mt-1  ${ i18n.language === "ar" ? " ltr " : " rtl "}`}
             src={isShown ? eyeOpen : eyeClose}
             alt={isShown ? "visible password" : "invisible password"}
             onClick={togglePasswordVisibility}

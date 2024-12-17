@@ -66,10 +66,12 @@ export default function ComplementaryAside() {
 
   return (
     <div
-      className="sticky top-24 overflow-y-scroll no-scrollbar max-h-screen xl:w-fit asideRight max-h-[100dvh] lg:max-h-[85dvh]"
+      // className="sticky top-24 overflow-y-scroll no-scrollbar max-h-screen xl:w-fit asideRight max-h-[100dvh] lg:max-h-[85dvh]"
+      className="sticky top-24 overflow-y-scroll  max-h-screen xl:w-fit asideRight max-h-[100dvh] lg:max-h-[85dvh] mx-auto "
+
       style={{ zIndex: "1" }}
     >
-      <div className="hidden lg:grid gap-1 w-fit " style={{ zIndex: "1" }}>
+      <div className="gap-1 w-fit " style={{ zIndex: "1" }}>
         {/* chosen user of the week */}
         {dataPerson?.user_name && (
           <div className="mb-4">
@@ -203,7 +205,8 @@ export default function ComplementaryAside() {
         <Online />
 
         {/* Terms and conditions */}
-        <a
+        {/*  Removed by Rajaa as a request from Ashraf */}
+        {/* <a
           href="http://tek-part.com"
           className="w-[130px] m-auto"
           target="_blank"
@@ -223,7 +226,7 @@ export default function ComplementaryAside() {
           </a>
           {t("Programming and Development Solutions")} @{" "}
           {currentDate.getFullYear()}
-        </p>
+        </p> */}
       </div>
     </div>
   );

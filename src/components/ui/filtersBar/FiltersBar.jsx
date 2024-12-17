@@ -22,12 +22,16 @@ export default function FiltersBar({ filters, width, setFilterCategory }) {
         },
       });
       setData(res.data.data);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     getData();
   }, [i18n.language]);
+
+
   const containerRef = useRef(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -61,39 +65,62 @@ export default function FiltersBar({ filters, width, setFilterCategory }) {
     setIsOpen(true);
   }
 
+
+  // added by abdallah 11/6/2024
+  // إلغاء تفعيل السحب عند الإفلات خارج العنصر
+  useEffect(() => {
+
+    const handleMouseUpOutside = () => {
+      if (isMouseDown) setIsMouseDown(false);
+    };
+
+    window.addEventListener("mouseup", handleMouseUpOutside);
+    window.addEventListener("mouseleave", handleMouseUpOutside);
+
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUpOutside);
+      window.removeEventListener("mouseleave", handleMouseUpOutside);
+    };
+  }, [isMouseDown]);
+
+
   return (
     <>
       <nav
-        className={`hidden md:flex gap-2 overflow-x-scroll no-scrollbar ${
-          width ? width : "md:max-w-4xl"
-        }`}
+        // className={`hidden md:flex gap-2 overflow-x-scroll no-scrollbar ${
+        className={`hidden md:flex gap-2 overflow-x-scroll  ${width ? width : "md:max-w-4xl"
+          }`}
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
       >
         {data?.length > 0 && (
-          <Button
-            children={t("all")}
-            className="w-fit whitespace-nowrap capitalize"
-            isReverse={"all" !== filteringBy}
-            onClick={() => {
-              setFilteringBy("all");
-              setFilterCategory("all");
-            }}
-          />
+          <div className=" mb-2">
+            <Button
+              children={t("all")}
+              className="w-fit whitespace-nowrap capitalize "
+              isReverse={"all" !== filteringBy}
+              onClick={() => {
+                setFilteringBy("all");
+                setFilterCategory("all");
+              }}
+            />
+          </div>
         )}
         {data.map((filter, index) => (
-          <Button
-            key={index}
-            children={t(filter.name)}
-            className="w-fit whitespace-nowrap "
-            isReverse={filter.id !== filteringBy}
-            onClick={() => {
-              setFilteringBy(filter.id);
-              setFilterCategory(filter.id);
-            }}
-          />
+          <div className=" mb-2">
+            <Button
+              key={index}
+              children={t(filter.name)}
+              className="w-fit whitespace-nowrap "
+              isReverse={filter.id !== filteringBy}
+              onClick={() => {
+                setFilteringBy(filter.id);
+                setFilterCategory(filter.id);
+              }}
+            />
+          </div>
         ))}
       </nav>
 
